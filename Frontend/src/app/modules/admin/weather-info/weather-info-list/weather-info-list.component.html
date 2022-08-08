@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-md-12 add-task-btn">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-text">
+          <div class="row">
+            <div class="col-md-6">
+              <select
+                (change)="changeCountry($event)"
+                class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option value="">Select Country</option>
+                <option *ngFor="let country of countryList" [ngValue]="country">
+                  {{ country.name | titlecase }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <select
+                (change)="changeCity($event)"
+                class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option value="">Select City</option>
+                <option *ngFor="let city of cityList" [ngValue]="city">
+                  {{ city | titlecase }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="selectedCity">
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">Weather Information</h5>
+          <div class="card-text">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <div class="card-body">
+                          <!-- <i class="fa fa-cloud" style="font-size:48px;color:blue"></i> -->
+                        <h5 class="card-title">Humidity </h5>
+                        
+                        <p class="card-text">{{weatherInfo?.current?.humidity}}</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <div class="card-body">
+                          <!-- <i class="fa fa-temperature-low" style="font-size:48px;"></i> -->
+                        <h5 class="card-title">Temperature </h5>
+                        <p class="card-text">{{weatherInfo?.current?.temperature}}</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4  mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <!-- <img src="..." class="card-img-top" alt="..."> -->
+                      <div class="card-body">
+                        <h5 class="card-title">Wind speed</h5>
+                        <p class="card-text">{{weatherInfo?.current?.wind_speed}}</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <div class="card-body">
+                          <!-- <i class="fa fa-cloud" style="font-size:48px;color:blue"></i> -->
+                        <h5 class="card-title">Pressure </h5>
+                        
+                        <p class="card-text">{{weatherInfo?.current?.pressure}}</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4  mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <div class="card-body">
+                          <!-- <i class="fa fa-temperature-low" style="font-size:48px;"></i> -->
+                        <h5 class="card-title">Cloud cover </h5>
+                        <p class="card-text">{{weatherInfo?.current?.cloudcover}}</p>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4  mb-3">
+                  <div class="card" style="width: 16rem;">
+                      <!-- <img src="..." class="card-img-top" alt="..."> -->
+                      <div class="card-body">
+                        <h5 class="card-title">Feels like</h5>
+                        <p class="card-text">{{weatherInfo?.current?.feelslike}}</p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

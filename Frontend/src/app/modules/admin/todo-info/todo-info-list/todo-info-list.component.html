@@ -1,0 +1,36 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <!-- <th scope="col">#</th> -->
+      <th scope="col">Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todoList; let i = index">
+        <!-- <td scope="col">{{ i + 1 }}</td> -->
+        <td scope="col">{{ todo.name }}</td>
+        <td scope="col">
+          <a href="javascript:void(0)" style="margin-right: 10px;" (click)="editTodo(todo)"
+          ><i class="fa fa-pencil-square-o"></i></a
+        >
+        <a href="javascript:void(0)" (click)="deleteTodo(todo, i)"
+          ><i class="fa fa-trash-o"></i></a
+        >
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item" >
+            <a href="javascript:void(0)" [ngStyle]="{'pointer-events': currentPage == 1 ? 'none' : 'unset'}" class="page-link" (click)="previous()">« Previous</a>
+          </li>
+          <li class="page-item">
+            <a href="javascript:void(0)" [ngStyle]="{'pointer-events': pageSize * currentPage >= totalRows ? 'none' : 'unset'}"  class="page-link" (click)="next()">Next »</a>
+          </li>
+        </ul>
+      </nav>
+    </tfoot>
+  </table>

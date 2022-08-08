@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <select
+      (change)="changeFilter($event)"
+      class="form-select form-select-lg mb-3"
+      aria-label=".form-select-lg example"
+    >
+      <option value="">Filter By</option>
+      <option *ngFor="let value of filters" [ngValue]="value">
+        {{ value }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <!-- <th scope="col">#</th> -->
+      <th scope="col" class="headers" (click)="sort('firstname')">First Name <i *ngIf="sortType == 'firstname'" class="fa fa-long-arrow-down"></i></th>
+      <th scope="col" class="headers" (click)="sort('lastname')">Last Name <i *ngIf="sortType == 'lastname'" class="fa fa-long-arrow-down"></i></th>
+      <th scope="col" class="headers" (click)="sort('username')">User Name <i *ngIf="sortType == 'username'" class="fa fa-long-arrow-down"></i></th>
+      <th scope="col" class="headers" (click)="sort('role')">Role <i *ngIf="sortType == 'role'" class="fa fa-long-arrow-down"></i></th>
+      <th scope="col" class="headers" (click)="sort('email')">Email <i *ngIf="sortType == 'email'" class="fa fa-long-arrow-down"></i></th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filterUserList; let i = index">
+        <!-- <td scope="col">{{ i + 1 }}</td> -->
+        <td scope="col" >{{ user.firstname }}</td>
+        <td scope="col" >{{ user.lastname }}</td>
+        <td scope="col" >{{ user.username }}</td>
+        <td scope="col" >{{ user.role }}</td>
+        <td scope="col" >{{ user.email }}</td>
+        <td scope="col">
+          <a href="javascript:void(0)" style="margin-right: 10px;" (click)="editUser(user, i)"
+          ><i class="fa fa-pencil-square-o"></i></a
+        >
+        <a href="javascript:void(0)" (click)="deleteUser(user, i)"
+          ><i class="fa fa-trash-o"></i></a
+        >
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <nav>
+        <ul class="pagination" style="text-align: center;">
+          <li class="page-item" style="width: 110px;">
+            <a href="javascript:void(0)" [ngStyle]="{'pointer-events': currentPage == 1 ? 'none' : 'unset'}" class="page-link" (click)="previous()">« Previous</a>
+          </li>
+          <li class="page-item" style="width: 110px;">
+            <a href="javascript:void(0)" [ngStyle]="{'pointer-events': pageSize * currentPage >= totalRows ? 'none' : 'unset'}"  class="page-link" (click)="next()">Next »</a>
+          </li>
+        </ul>
+      </nav>
+    </tfoot>
+  </table>

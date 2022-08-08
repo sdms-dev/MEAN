@@ -1,0 +1,29 @@
+<form class="example-form" #todoForm="ngForm" (ngSubmit)="onSubmit($event)">
+    <div class="row">
+      <div class="col-md-12 add-task-btn">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                To-Do
+              </h5>
+              <p class="card-text">
+                <input
+                type="text"
+                class="form-control w-50"
+                placeholder="Todo"
+                id="name"
+                name="todo"
+                ngModel
+                />
+              </p>
+              <button type="submit" class="btn btn-primary mr-6">
+                  {{ isEditing ? "Update Todo" : "Add Todo" }}
+              </button>
+              <button (click)="todoForm?.reset();isEditing=false" type="reset" class="btn btn-secondary">
+                  Reset
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </form>

@@ -1,0 +1,107 @@
+<div
+  class=""
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit($event)">
+    <div class="modal-header">
+      <h5 class="modal-title">User</h5>
+      <button
+        type="button"
+        class="close"
+        (click)="closeModal()"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row mb-2">
+        <div class="col-md-12 add-task-btn">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-text">
+                <div class="row">
+                  <div class="col-md-6 pb-3">
+                    <label>First Name</label>
+                    <input
+                      type="hidden"
+                      class="form-control"
+                      placeholder="First name"
+                      name="_id"
+                      ngModel
+                    />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First name"
+                      name="firstname"
+                      ngModel
+                    />
+                  </div>
+                  <div class="col-md-6 pb-3">
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Last name"
+                      name="lastname"
+                      ngModel
+                    />
+                  </div>
+                  <div class="col-md-6 pb-3">
+                    <label>Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="User name"
+                      name="username"
+                      ngModel
+                    />
+                  </div>
+                  <div class="col-md-6 pb-3">
+                    <label>Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Email"
+                      name="email"
+                      ngModel
+                    />
+                  </div>
+                  <div class="col-md-6 pb-3">
+                    <label>Role</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Role"
+                      name="role"
+                      ngModel
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">
+        {{ isEditing ? "Update User" : "Add User" }}
+      </button>
+      <button
+        (click)="userForm?.reset(); isEditing = false"
+        type="reset"
+        class="btn btn-secondary"
+      >
+        Reset
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
